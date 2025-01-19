@@ -7,6 +7,7 @@
 
 class CoinManager {
 private:
+	bool isSkyLevelOn;
     std::vector<Coin> coins;  
     float spawnTimer;         // Czas od ostatniego wygenerowania monety
     float spawnInterval;      // Czas miedzy generowaniem monet
@@ -16,7 +17,9 @@ private:
     sf::Texture coinTexture; // Tekstura dla monet
 
 public:
-    CoinManager(float spawnInterval, float speed, float initialSpeed, float obstacleSpeed); 
+	void turnSkyLevelOn();
+	void turnSkyLevelOff();
+    CoinManager(float spawnInterval, float obstacleSpeed); 
     void update(float deltaTime, sf::FloatRect playerBounds, int& coinCount, const std::vector<sf::FloatRect>& obstacleBounds);
     void draw(sf::RenderWindow& window); 
     void setObstacleSpawnSpeed(float speed);

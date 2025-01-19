@@ -17,7 +17,8 @@ Button::Button(const sf::Vector2f& size, const sf::Vector2f& position, const sf:
 
     normalColor = sf::Color::Blue;
     hoverColor = sf::Color::Red;
-    button.setFillColor(normalColor);
+    transparentColor = sf::Color(0, 0, 0, 0); // Niebieski z 50% przezroczystością
+    button.setFillColor(transparentColor);
 }
 
 void Button::draw(sf::RenderWindow& window) {
@@ -38,6 +39,15 @@ void Button::update(const sf::Vector2i& mousePos) {
             isHovered = false;
         }
     }
+}
+
+void Button::setText(const std::string text) {
+    buttonText.setString(text);
+    sf::FloatRect textBounds = buttonText.getLocalBounds();
+    buttonText.setPosition(
+        button.getPosition().x + (button.getSize().x - textBounds.width) / 2,
+        button.getPosition().y + (button.getSize().y - textBounds.height) / 2 - textBounds.top
+    );
 }
 
 bool Button::isClicked(const sf::Vector2i& mousePos, const sf::Event::MouseButtonEvent& mouseEvent) const {

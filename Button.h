@@ -11,6 +11,7 @@ public:
     void update(const sf::Vector2i& mousePos);
     void setTexture(const std::string& textureFile, const std::string& hoverTextureFile); // Metoda ustawiania tekstury
     bool isClicked(const sf::Vector2i& mousePos, const sf::Event::MouseButtonEvent& mouseEvent) const;
+    void setText(const std::string text); // Ustawienie tekstu na przycisku
 
     std::string getText() const; // Pobranie tekstu z przycisku
     
@@ -20,6 +21,7 @@ private:
     sf::Text buttonText;       // Tekst wyświetlany na przycisku
     sf::Color normalColor;     // Kolor przycisku w normalnym stanie
     sf::Color hoverColor;      // Kolor przycisku w stanie "hover"
+    sf::Color transparentColor; // Kolor przycisku w stanie "transparent"
     sf::Texture buttonTexture; // Pole tekstury
     sf::Sprite buttonSprite; // Pole sprite
     sf::Texture hoverTexture;
